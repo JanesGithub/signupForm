@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
+#form {
+  border: 1px lightgrey solid;
+  border-radius: 5px;
+  padding-top: 15px;
+  margin-top: 50px;
+}
+
+.alert {
+  color: red;
+}
