@@ -23,7 +23,7 @@ document.getElementById("inputPassword").addEventListener('keyup', function(e) {
   }
   enableDisableButton("signIn");
   if (e.keyCode === 13) {
-    if (!checkIfSignInFilled()) {
+    if (!checkIfFormIsValid("signIn")) {
       document.getElementById("alert-signin").className = "alert";
     }
     document.getElementById("inputPassword").blur();
@@ -73,24 +73,42 @@ function validateConfirm(password) {
 
 document.getElementById('inputUsername2').addEventListener("keyup", function(e) {
   validateUsername("inputUsername2");
-  enableDisableButton("signUp")
+  enableDisableButton("signUp");
 });
 
 document.getElementById('inputPassword2').addEventListener("keyup", function(e) {
   validatePassword("inputPassword2");
   validateConfirm("confirmPassword");
-  enableDisableButton("signUp")
+  enableDisableButton("signUp");
 });
 
 document.getElementById('confirmPassword').addEventListener("keyup", function(e) {
   validateConfirm("confirmPassword");
-  enableDisableButton("signUp")
+  enableDisableButton("signUp");
 });
 
-// var inputs = Array.prototype.slice.call(document.getElementsByTagName("input"));
+var signUp = document.getElementById("signUp");
+var inputs = Array.prototype.slice.call(signUp.getElementsByTagName("input"));
+
+// inputs.forEach(function(item, i, arr) {
+//   item.addEventListener("keypress", function(e) {
+//     if (e.which === 13) {
+//       }
+//   });
+//   console.log( i + ": " + item + " (массив:" + arr + ")" );
+// });
+
+for (var i = 0; i < inputs.length - 1; i++) {
+  inputs[i].addEventListener("keypress", function(e) {
+    if (e.which === 13) {
+      console.log(inputs[i]);
+      inputs[i + 1].focus();
+    }
+  });
+}
 // inputs.foreach(addEventListener("keypress", function(e) {
 //   if (e.which === 13) {
-//     this.parentNode.parentNode.nextSibling.lastChild.firstChild.nodeName.focus();
+//     this.parentNode.parentNode.nextSibling.lastChild.firstChild.focus();
 //   }
 // }));
 
