@@ -97,14 +97,16 @@ var inputs = Array.prototype.slice.call(signUp.getElementsByTagName("input"));
 //   });
 //   console.log( i + ": " + item + " (массив:" + arr + ")" );
 // });
-
-for (var i = 0; i < inputs.length - 1; i++) {
-  inputs[i].addEventListener("keypress", function(e) {
-    if (e.which === 13) {
-      console.log(inputs[i]);
-      inputs[i + 1].focus();
-    }
-  });
+var i;
+for (i = 0; i < inputs.length - 1; i++) {
+  inputs[i].onkeypress = function(i) {
+    return function(e) {
+      if (e.which === 13) {
+        console.log(inputs[i]);
+        inputs[i + 1].focus();
+      }
+    };
+  }(i);
 }
 // inputs.foreach(addEventListener("keypress", function(e) {
 //   if (e.which === 13) {
